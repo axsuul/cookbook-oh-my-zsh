@@ -9,7 +9,7 @@ export ZSH_THEME="<%= @theme %>"
 # export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
@@ -21,12 +21,16 @@ export ZSH_THEME="<%= @theme %>"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+# Source
 source $ZSH/oh-my-zsh.sh
 
 # Source shell scripts from profile.d
 if [ "$(ls -A /etc/profile.d)" ]; then
   for f in /etc/profile.d/*.sh; do source $f; done
 fi
+
+# Disable the annoying autocorrect feature
+unsetopt correct_all
 
 # Start SSH agent so we can add keys
 eval `ssh-agent`
