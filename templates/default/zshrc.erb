@@ -28,5 +28,8 @@ if [ "$(ls -A /etc/profile.d)" ]; then
   for f in /etc/profile.d/*.sh; do source $f; done
 fi
 
+# Start SSH agent so we can add keys
+eval `ssh-agent`
+
 # Any other commands to run on startup
 <%= @commands.join("\n") if @commands %>
