@@ -35,5 +35,11 @@ unsetopt correct_all
 # Start SSH agent so we can add keys
 eval `ssh-agent`
 
+# Fix slow git prompt
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
 # Any other commands to run on startup
 <%= @commands.join("\n") if @commands %>
