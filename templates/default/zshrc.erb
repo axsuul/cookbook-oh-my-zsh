@@ -33,7 +33,7 @@ fi
 unsetopt correct_all
 
 # Start SSH agent so we can add keys
-eval `ssh-agent`
+eval `ssh-agent` >> /dev/null
 
 # Fix slow git prompt
 function git_prompt_info() {
